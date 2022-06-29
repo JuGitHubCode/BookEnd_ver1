@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mgtcustomer">
+	<select id='tot_size' parameterType="bean.PageMgtView" resultType="Integer">
+		select count(uId) from user
+		where ${type} like '%${findStr}%'
+		order by ${sort} ${sortType}
+	</select>
+	
+	<select id='select' parameterType="bean.PageMgtView" resultType="customer.MgtCsVo">
+		select * from user
+		where ${type} like '%${findStr}%'
+		order by ${sort} ${sortType}
+		limit ${startNo}, ${listSize}
+	</select>
+	
+
+	
+</mapper>

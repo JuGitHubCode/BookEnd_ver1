@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mgtcreateuser">
+	<select id="select" parameterType="String" resultType="mgtUser.mgtAdminVo">
+		select uId, uName, job from users
+		where uId like "%${uuId}%"
+		and uName like "%${uName}%"
+		and job = ""
+	</select>
+	<select id="selectOne" parameterType="String" resultType="mgtUser.mgtAdminVo">
+		select uId, uName, job from users
+		where uId = #{_parameter}
+	</select>
+	<insert id="insert" parameterType="mgtUser.mgtAdminVo">
+		insert into users(uId, pwd, uName, birth, phone, email, address1,address2, zipCode, gender, joinDate, job)
+		values(#{uId},#{pwd},#{uName},#{birth},#{phone},#{email},#{address1},#{address2},#{zipCode},#{gender},#{joinDate},#{job})
+	</insert>
+	<update id="update" parameterType="mgtUser.mgtAdminVo">
+		update users
+		set job="a"
+		where uId=#{uuId}
+	</update>
+</mapper>

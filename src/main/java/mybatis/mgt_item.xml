@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="item">
+
+	<insert id='input' parameterType="item.MgtItemVo" >
+		insert into item(code, codeName, writer, company, category, list, contents, nal, price, ea)
+		values( #{code}, #{codeName}, #{writer}, #{company}, #{category}, #{list}, #{contents}, #{nal}, #{price}, #{ea})
+	</insert>
+	
+	<update id='inputAtt' parameterType='item.MgtItemAtt'><!-- 첨부 이미지 -->
+		update item set img = #{oriFile} where code=#{code}
+	</update>
+
+	<select id='tot_size' parameterType="bean.PageItem" resultType="Integer">
+			select count(code) from item 
+			where code like  '%${findStr}%'
+			or codeName like '%${findStr}%' 
+			or writer like 	 '%${findStr}%' 
+			or company like  '%${findStr}%' 
+			or category like '%${findStr}%' 
+			or list like     '%${findStr}%' 
+			or contents like '%${findStr}%'
+			or nal like      '%${findStr}%' 
+			or price like    '%${findStr}%' 
+			or ea like       '%${findStr}%'
+	</select>
+
+	<select id='select' parameterType="bean.PageItem" resultType="item.MgtItemVo">
+			select * from item
+			where code like  '%${findStr}%'
+			or codeName like '%${findStr}%' 
+			or writer like 	 '%${findStr}%' 
+			or company like  '%${findStr}%' 
+			or category like '%${findStr}%' 
+			or list like     '%${findStr}%' 
+			or contents like '%${findStr}%'
+			or nal like      '%${findStr}%' 
+			or price like    '%${findStr}%' 
+			or ea like       '%${findStr}%'
+			order by nal desc
+			limit ${startNo}, ${listSize}
+	</select>
+	
+	<select id='selectEa' parameterType="bean.PageItem" resultType="item.MgtItemVo"> 
+			select * from item
+			where code like  '%${findStr}%'
+			or codeName like '%${findStr}%' 
+			or writer like 	 '%${findStr}%' 
+			or company like  '%${findStr}%' 
+			or category like '%${findStr}%' 
+			or list like     '%${findStr}%' 
+			or contents like '%${findStr}%'
+			or nal like      '%${findStr}%' 
+			or price like    '%${findStr}%' 
+			or ea like       '%${findStr}%'
+			order by ea desc, nal desc
+			limit ${startNo}, ${listSize}
+	</select>
+	
+	<select id='selectCode' parameterType="bean.PageItem" resultType="item.MgtItemVo"> 
+			select * from item
+			where code like  '%${findStr}%'
+			or codeName like '%${findStr}%' 
+			or writer like 	 '%${findStr}%' 
+			or company like  '%${findStr}%' 
+			or category like '%${findStr}%' 
+			or list like     '%${findStr}%' 
+			or contents like '%${findStr}%'
+			or nal like      '%${findStr}%' 
+			or price like    '%${findStr}%' 
+			or ea like       '%${findStr}%'
+			order by codeName asc, nal desc
+			limit ${startNo}, ${listSize}
+	</select>
+	
+	<select id='modify' parameterType="String" resultType="item.MgtItemVo"><!-- 리스트 클릭하여 modify이동 -->
+			select * from item where code=#{code} 
+	</select>
+	
+	<update id='modifyR' parameterType="item.MgtItemVo" >
+		update item set code=#{code}, codeName=#{codeName}, writer=#{writer}, 
+		company=#{company}, category=#{category}, list=#{list}, contents=#{contents}, 
+		nal=#{nal}, price=#{price}, ea=#{ea} where code=#{code}
+	</update>
+	
+	<delete id='delete' parameterType="String">
+		delete from item where code=#{_parameter}
+	</delete>
+	
+</mapper>

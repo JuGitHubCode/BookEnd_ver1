@@ -1,0 +1,223 @@
+@charset "UTF-8";
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+/* user_order */
+
+.user_order{
+	text-align:center;
+	margin: 20px auto;
+	width: 1500px;
+}
+
+#oOrder, #oProduct, #totP, #oDeliver, #oPay{
+	margin: 20px 50px 50px 150px;
+	width:700px;
+	--float: left;	
+	text-align: left;
+	
+}
+
+#frm_user_order h3{
+	margin: 50px 0 5px 0;
+}
+
+.user_order label:not(.tot, .tot2){
+	display:inline-block;
+	width:70px;
+	margin: 5px 10px 5px 0;
+}
+
+.user_order input[type='text']{
+	padding: 5px;
+	margin: 5px 0px;
+}
+
+.user_order input[type='text']:read-only{
+	background-color:#fed38d;
+	border:1px solid #eee;
+}
+
+.user_order hr{
+	border : 2px solid #fec156;
+	margin: 5px 0px 20px 0px;
+}
+
+#oDeliver #btnZipFind{
+	padding: 6px;
+	background-color:#fec156;
+	border:none;
+	border-radius: 5px;
+	color: #fff;
+}
+
+#oDeliver .setd{
+	width: 200px;
+}
+
+#oDeliver #btnZipFind:hover{
+	background-color: #fed38d;
+}
+
+
+#oProduct .title{
+	background-color:#fec156;
+	color: #fff;
+	text-align: center;
+	margin: 10px auto;
+}
+
+#oProduct .img{width:150px;}
+#oProduct .codeName{width:300px;}
+#oProduct .orderEa{width:100px;}
+#oProduct .price{width:100px;}
+
+#oProduct span{
+	display:inline-block;
+	text-align:center;
+	margin:10px auto;
+}
+
+#oProduct .item{
+		width:100%;
+		text-align: center;
+		display: table;
+		margin: 10px auto;
+}
+#oProduct .item span{
+	
+	display: table-cell;
+	vertical-align: middle;
+	
+}
+
+#oProduct .item:nth-child(1n){
+	border-bottom: 1px solid #fec156;
+}
+
+#oProduct .item:last-child{
+	border-bottom: 2px solid #fec156;
+}
+
+/* #oProduct .items:hover{
+	background-color: #fed38d;
+	cursor:pointer;
+} */
+
+ #totP{
+	text-align:right;
+	margin-top:-10px;
+} 
+
+#totP label{
+	width: 100px;
+}
+
+#totP .tot{
+	border:none;
+	font-size: 15pt;
+	text-align: right;
+}
+
+#user_order .tot{
+	font-size: 15pt;
+}
+
+#oPay input[type="radio"]{display:none; margin:10px;}
+#oPay input[type="radio"] + label {
+  display:inline-block;
+  margin:-2px;
+  padding:10px;
+  background-color:#fff;
+  border:1px solid #cccccc;
+  font-size:13px !important;
+  width:150px;
+  text-align:center;
+}
+#oPay input[type="radio"]:checked + label {
+  background-image:none;
+  background-color:#fec156;
+  color:#fff;
+}
+
+#oPay input[type="radio"]:hover + label {
+  background-image:none;
+  border:1px solid #aaa;
+}
+
+#oLast span{
+	font-size:10pt;
+	text-align:left;
+}
+
+
+#oLast{
+	display:inline-block;
+	border: 3px solid #fec156;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 80px auto; 
+	text-align: right;
+}
+
+#oLast .btnOrder{
+	width: 300px;
+	margin: 20px 0 0 0;
+	padding: 7px;
+	background-color:#fec156;
+	border:none;
+	border-radius: 5px;
+	color: #fff;
+}
+
+#oLast .btnOrder:hover{
+	background-color: #fed38d;
+}
+#oLast label{
+	font-size:20pt;
+	text-align:right;
+}
+
+#oLast hr{
+	border: 1px solid #fec156;
+	margin: 10px 0px 0px 0px;
+}
+
+/* user_order_detail */
+#user_order_detail{
+	text-align:center;
+	margin: 20px auto;
+	width: 1500px;
+}
+
+#frm_user_order_d{
+	width: 700px;
+	margin: 30px auto;
+	text-align:left;
+	border: 4px solid #fec156;
+	border-radius: 10px;
+	padding: 50px;
+}
+
+#frm_user_order_d h3{
+	margin: 10px 0 10px -1px;
+}
+
+#frm_user_order_d label{
+	display:inline-block;
+	width:70px;
+	margin: 5px 10px 5px 0;
+}
+
+#frm_user_order_d hr{
+	border : 1px solid #fec156;
+	margin: 5px 0px 20px 0px;
+}
+
+
+
+
+

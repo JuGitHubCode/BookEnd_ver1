@@ -1,0 +1,286 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* 회원가입 */
+#join{
+	width: 550px;
+	margin: 50px auto;
+}
+
+#join > h2{
+	color: #222;
+	text-align: center;
+	margin: 20px 0;
+}
+
+#join > #frm_user_join{
+	border-top : 2px solid #fec156;
+	border-bottom : 2px solid #fec156;
+	padding: 30px 20px;
+}
+#join > #frm_user_join .label_group{
+	margin-top: 5px;
+	margin-left: 25px;
+}
+#join > #frm_user_join label{
+	display: inline-block;
+	width: 120px;
+	font-size: 1em;
+	font-weight: 500;
+}
+#join > #frm_user_join input{
+	width: 320px;
+	height: 30px;		
+	margin: 5px 0;
+	border: none;
+	box-shadow: 0 0 2px #333;
+	border-radius: 3px;
+	font-size: 1em;
+	padding: 2px 10px;
+}
+#join > #frm_user_join input[type="radio"]{
+	width: 50px;
+	height: 20px;
+	box-shadow: none;
+	margin-bottom: 10px;
+}
+#join > #frm_user_join input[name="zipCode"]{
+	width: 160px;
+}
+#join > #frm_user_join #btnFindZipcode{
+	position: relative;
+	margin-left: 5px;
+	width: 150px;
+	height: 32px;
+	border: 1px solid #ccc;
+	background: #fff;
+	border-radius: 7px;
+	cursor: pointer;
+	padding: 2px 10px;
+	font-size: 1em;
+	font-weight: 500;
+	top: 1px;
+	cursor: pointer;
+}
+#join > #frm_user_join span{
+	position: relative;
+	bottom: 7px;
+	margin-left: 130px;
+	font-size: 0.5em; 
+	color: #dd3115;
+}
+#join > #frm_user_join input[type="date"]{
+	text-align: right;
+	padding-right: 20px;
+}
+
+#join > #frm_user_join > .btns{
+	margin: 20px 0;
+	text-align: center;
+}
+#join > #frm_user_join > .btns > button{
+	width: 350px;
+	height: 45px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	cursor: pointer;
+	padding: 3px 10px;
+	color: #000;
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+#join > #frm_user_join > .btns > #btnJoin{
+	background: #fec156;
+	color: #fff;
+}
+/* 로그인 */
+#main > #login{
+	width: 350px;
+	margin: 50px auto;
+}
+#main > #login h2{
+	color: #222;
+	text-align: center;
+	margin: 20px 0;
+}
+#main > #login > #frm_user_login{
+	padding: 10px 20px;	
+}
+#main > #login > #frm_user_login > input{
+	width: 310px;
+	height: 40px;		
+	margin: 5px 0;
+	border: none;
+	box-shadow: 0 0 2px #333;
+	border-radius: 3px;
+	font-size: 1.2em;
+	padding: 2px 10px;
+}
+#main > #login > #frm_user_login > .findUser{
+	margin-top: 5px;
+	text-align: right;
+	font-size: 0.7em;
+}
+#main > #login > #frm_user_login > .findUser span{
+	cursor: pointer;
+}
+#main > #login > #frm_user_login > .btns{
+	margin: 20px 0;
+	text-align: center;
+}
+#main > #login > #frm_user_login > .btns > button{
+	width: 310px;
+	height: 40px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	cursor: pointer;
+	padding: 3px 10px;
+	color: #000;
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+#main > #login > #frm_user_login > .btns > #btnLogin {
+	background: #fec156;
+	color: #fff;
+}
+/* 아이디 찾기, 비밀번호 찾기 */
+#findId, #findPwd{
+	width: 400px;
+	margin: 50px auto;
+}
+#findId > h2, #findPwd > h2{
+	color: #222;
+	text-align: center;
+	margin: 20px 0;
+}
+#findId > #frm_user_findId,
+#findPwd > #frm_user_findPwd{
+	padding: 10px 20px;
+}
+#findId > #frm_user_findId > .certify,
+#findPwd > #frm_user_findPwd > .certify{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px;
+}
+#findPwd > #frm_user_findPwd > .certify{
+	width: 350px;
+	height: 50px;
+	background: #fff;
+	border: none;
+	text-align: center;
+	line-height: 50px;
+	border-bottom: 2px solid #000;
+	font-size: 0.9em;
+}
+#findId > #frm_user_findId > .certify > #btnPhoneCertify,
+#findId > #frm_user_findId > .certify > #btnEmailCertify{
+	width: 175px;
+	height: 50px;
+	background: #fff;
+	border: none;
+	cursor: pointer;
+	font-size: 0.9em;
+}
+#findId > #frm_user_findId > .certify > #btnPhoneCertify{
+	border-bottom: 2px solid #fec156;
+}
+#findId > #frm_user_findId .findUidEmail{
+	display: none;	
+}
+#findId > #frm_user_findId .label_group,	
+#findPwd > #frm_user_findPwd .label_group{
+	position: relative;
+	margin-bottom: 20px;
+	margin-left: 20px;
+}
+#findId > #frm_user_findId label,
+#findPwd > #frm_user_findPwd label{
+	display: inline-block;
+	width: 70px;
+	font-size: 1em;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+#findId > #frm_user_findId input,
+#findPwd > #frm_user_findPwd input{
+	width: 320px;
+	height: 30px;		
+	margin: 5px 0;
+	border: none;
+	box-shadow: 0 0 2px #333;
+	border-radius: 3px;
+	font-size: 1em;
+	padding: 2px 10px;
+}
+#findId > #frm_user_findId span,
+#findPwd > #frm_user_findPwd span{
+	position: absolute;;
+	bottom: -10px;
+	margin-left: 0px;
+	font-size: 0.5em; 
+	color: #dd3115;
+}
+#findId > #frm_user_findId .btns,
+#findPwd > #frm_user_findPwd .btns{
+	margin: 20px 0;
+	text-align: center;
+}
+#findId > #frm_user_findId .btns button,
+#findPwd > #frm_user_findPwd .btns button{
+	width: 320px;
+	height: 45px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	cursor: pointer;
+	padding: 3px 10px;
+	color: #000;
+	font-size: 1.2em;
+	margin: 10px 0;
+}
+#findId > #frm_user_findId .btns #btnFindUid,
+#findPwd > #frm_user_findPwd .btns #btnFindPwd{
+	color: #fff;
+	background : #fec156
+}
+
+/* 찾기 결과 페이지 */
+#find_uId_result,
+#find_pwd_result {
+	width: 340px;
+	margin: 50px auto;
+}
+#find_uId_result > h4,
+#find_pwd_result > h4{
+	color: #000;
+}
+#find_uId_result > span.guide,
+#find_pwd_result > span.guide{
+	font-size: 0.8em;
+	color: #999;
+}
+#find_uId_result > div.result > span,
+#find_pwd_result > div.result > span{
+	display: inline-block;
+	margin: 20px 0;
+}
+
+#find_uId_result > div.result > button,
+#find_pwd_result  div.result > button{
+	color: #fff;
+	background: #fec156;
+	width: 320px;
+	height: 45px;
+	border: 1px solid #ccc;
+	border-radius: 7px;
+	cursor: pointer;
+	padding: 3px 10px;
+	font-size: 1.2em;
+	margin: 10px 0;
+}

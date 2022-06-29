@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mypage">
+
+	<select id="selectFirstOrder" parameterType="String" resultType="mypage.UserMypageVo">
+		select o.orderNo, o.code, i.codeName, i.price, o.orderEa, o.amt, i.img, o.orderDate, 
+			   o.paymentType, o.rName, o.rZipcode, o.rAddress, o.rPhone
+		from orders o join item i
+		on o.code = i.code
+		where o.uId='${uId}'
+		order by orderDate desc
+	</select>
+
+	<select id="tot_size" parameterType="bean.PageMypage" resultType="Integer">
+		select count(o.sno) from orders o
+   		where o.orderNo='${orderNo}'
+	</select>
+ 
+	<select id="viewOrderDetail" parameterType="bean.PageMypage" resultType="mypage.UserMypageVo"> <!-- parameterType="String" -->
+		select o.orderNo, o.code, i.codeName, i.price, o.orderEa, o.amt, i.img, o.orderDate, 
+			   o.paymentType, o.rName, o.rZipcode, o.rAddress, o.rPhone, o.remark
+		from orders o join item i
+		on o.code = i.code
+		where o.orderNo='${orderNo}'
+	</select> 
+	
+	<!-- 회원정보 수정 페이지에 기존 정보 뿌리기 -->
+	<select id="selectOneInfo" parameterType="String" resultType="mypage.UserMypageVo">
+		select uId, uName, email, phone, zipCode, address1, address2, gender, birth from user 
+		where uId=#{_parameter}
+	</select>
+	
+	<update id="updateInfo" parameterType="mypage.UserMypageVo">
+		update user set uId=#{uId}, uName=#{uName}, birth=#{birth}, phone=#{phone}, email=#{email}, 
+						zipCode=#{zipCode}, address1=#{address1}, address2=#{address2}, gender=#{gender}
+		where uId='${uId}'
+	</update>
+	
+	<!-- 비밀번호 변경 페이지에 기존 정보 뿌리기 -->
+	<select id="selectOnePwd" parameterType="String" resultType="mypage.UserMypageVo">
+		select pwd from user 
+		where uId=#{_parameter}
+	</select>
+	
+	<update id="updatePwd" parameterType="mypage.UserMypageVo">
+		update user set pwd=#{pwd}
+		where uId='${uId}'
+	</update>
+	
+	<select id="email_validation" parameterType="String" resultType="String">
+		select email from user
+		where email='${_parameter}'
+	</select>
+
+	<select id="phone_validation" parameterType="String" resultType="String">
+		select phone from user
+		where phone='${_parameter}'
+	</select>
+	
+</mapper>

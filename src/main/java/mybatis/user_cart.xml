@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user_cart">
+	<select id="select" parameterType="String" resultType="cart.UserCartVo">
+		select u.uId, i.code , i.codeName, i.img , i.price , c.orderEa, 
+			   u.address1, u.address2, i.ea
+		from cart c 
+		join user u on u.uId = c.uId 
+		join item i on c.code = i.code
+		where c.uId = '${_parameter}'
+	</select>
+	
+	<update id="minusItem" parameterType="cart.UserCartVo">
+		update cart set orderEa = orderEa-1
+		where uId = #{uId} and code = #{code}
+	</update>
+	
+	<update id="plusItem" parameterType="cart.UserCartVo">
+		update cart set orderEa = orderEa+1
+		where uId = #{uId} and code = #{code}
+	</update>
+	
+	<delete id="deleteItem" parameterType="cart.UserCartVo">
+		delete from cart
+		where uId = #{uId} and code = #{code}
+	</delete>
+	
+	<delete id="deleteAllItem" parameterType="String">
+		delete from cart
+		where uId = '${_parameter}'
+	</delete>
+</mapper>

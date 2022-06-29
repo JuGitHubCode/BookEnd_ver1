@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/* Base */
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: #444;
+	font-family: 'Noto Sans KR', sans-serif;	/*폰트 타입*/
+	font-weight: 400;
+}
+a{
+	text-decoration: none;			/*밑줄 삭제*/
+}
+a:hover{	/*마우스 올려놨을 때*/
+	color: #fec156;
+	cursor: pointer;	
+}
+body{
+	min-width: 1800px;	/*최소 넓이*/
+}
+li{
+	list-style: none;	/*불릿(앞 표시) 삭제*/
+}
+footer{
+	text-align : center;
+	background-color:#000000;
+	color:#fff;
+}
+
+/*메뉴 슬라이드*/
+nav{
+	width : 30px;
+}
+
+.menu > li{
+	float : left;
+	width : 150px;
+	height : 50px;
+	/*border : 2px solid #fff;*/
+}
+
+.menu > li > img{
+	margin: 20px;
+	line-height : 40px;
+	text-align : center;
+	background-color : rgba(255, 255, 255, 0);
+}
+
+/* .menu > li:hover > img{ 
+	background-color : #fff;
+	border-radius : 10px;
+} */
+
+.menu_sub > a{
+	color:#fff;
+}
+
+.submenu{
+	display : none;
+}
+
+.submenu > li{
+	margin-left: 10px;
+	width : 130px;
+	height : 40px;
+	background-color: #000; 
+	padding-left: 10px;
+}
+.submenu > li > a{
+	line-height : 40px;
+	font-size : 18px;
+	text-align : center;
+	color: #fff;
+}
+.submenu > li:hover {
+	background-color: #fec156;
+}
+
+.submenu > li:hover a{
+	color:#000;
+}
+
+.menu_sub img{
+	width: 2%;
+}
+
+
+
+/* Name-가변형 */
+#index{
+	width: 100%;
+	background: #fff;
+}
+
+#index > #frm_header >.header{
+	width: 100%;
+	height : 500px;
+	margin: 0 auto;
+	background: #000;
+}
+
+.menu_category, .menu_sub{
+	padding : 10px;
+}
+
+.header > .header_main{
+	margin : 20px auto;
+	text-align: center;
+}
+
+.searchLine{
+	width : 1000px;
+	background-color : #fff;
+	border-radius : 30px;
+	padding : 4px;
+	display : inline-block;
+	text-align : center;
+}
+.searchLine > #findStr{
+	width : 900px;
+	border : 0px;
+	outline: none;
+	padding : 10px 0px;
+	font-size : 15px;
+	vertical-align: middle;
+}	
+.searchLine > #searchIcon{
+	margin:0 0 -10px 10px;
+	vertical-align: midde;
+}
+
+/* 서브 기능 */
+.header > .menu_sub{
+	text-align: right;
+	margin-right : 30px;
+}
+
+.mid {
+	background-color: #fff;
+}
+
+
+
+

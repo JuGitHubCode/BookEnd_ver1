@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user_order">
+	<select id='select_uId' parameterType="String" resultType="order.UserOrderVo">
+		select uName, phone, email, address1, address2, zipCode 
+		from user
+		where uId = #{_parameter}
+	</select>
+	
+	<select id='select_cart' parameterType="String" resultType="order.UserOrderVo">
+		select c.code, codeName, orderEa, img, price from cart c join item i
+		on c.code = i.code
+		where uId = #{_parameter}
+	</select>
+	
+	<insert id='insertOrder' parameterType='order.UserOrderVo'>
+		insert into orders(orderNo, uId, code, orderEa, amt, orderDate, remark, rName, rPhone, rZipCode, rAddress, paymentType) values
+		<foreach collection="list" item='vo' separator=",">
+			(#{vo.orderNo}, #{vo.uId}, #{vo.code}, #{vo.orderEa}, #{vo.amt}, #{vo.orderDate}, #{vo.remark}, #{vo.rName}, #{vo.rPhone}, #{vo.rZipcode}, #{vo.rAddress}, #{vo.pay} )
+		</foreach>
+	</insert>
+	
+	<delete id='deleteCart' parameterType = "String">
+		delete from cart where uId = #{vo.uId}
+	</delete>
+	
+	<update id='updateItem' parameterType='order.UserOrderVo'>
+		update item set 
+		<foreach collection="list" item='vo' separator=",">
+			ea = (ea-${vo.orderEa}) where code = #{vo.code}
+		</foreach>
+	</update>
+	
+	<select id='selectOrderNo' parameterType="String" resultType="order.UserOrderVo">
+		select orderNo, rName, rPhone, rZipcode, rAddress, remark, amt  from orders
+		where orderNo = #{vo.orderNo}
+		limit 1
+	</select>
+</mapper>

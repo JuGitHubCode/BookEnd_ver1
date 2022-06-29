@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user_subPage">
+
+	<!-- 검색 Page Setting -->
+	<select id="tot_size" parameterType="bean.pageMain" resultType="Integer">
+		select count(code) from item
+		where codeName like  '%${findStr}%' 
+		or writer like '%${findStr}%' 
+		or company like     '%${findStr}%' 
+		or price like     '%${findStr}%' 
+	</select>
+	<!-- 검색 -->
+	<select id='select' parameterType="bean.pageMain" resultType="subpage.UserSubPageVo">
+		select * from item
+		where codeName like '%${findStr}%' 
+		or writer like '%${findStr}%' 
+		or company like     '%${findStr}%' 
+		or price like     '%${findStr}%' 
+		order by code 
+		limit ${startNo}, ${listSize}	
+	</select>
+	
+	
+	<!-- 카테고리 Page Setting -->
+	<select id="tot_size_category" parameterType="Integer" resultType="Integer">
+		select count(code) from item where category = #{_parameter}
+	</select>
+	<!-- 카테고리 -->
+	<select id='categorySelect' parameterType="bean.pageMain" resultType="subpage.UserSubPageVo">
+		select * from item
+		where category like  '%${categoryType}%' 
+		limit ${startNo}, ${listSize}	
+	</select>
+	
+	
+	<!-- 상세 -->
+	<select id='detailSelect' parameterType="String" resultType="subpage.UserSubPageVo">
+		select * from item where code = #{_parameter}
+	</select>
+	
+	
+	
+	<!-- 유저 찾기 -->
+	<select id='jobSelect' parameterType='String' resultType='member.UserMemberVo'>
+		select * from user where uId = #{_parameter}
+	</select>
+	
+	<!-- 장바구니 정보 넣기 -->
+	<insert id='cartInsert' parameterType='cart.UserCartVo'>
+		insert into cart(uId, code, orderEa)
+		values(#{uId}, #{code}, #{orderEa})
+	</insert>
+
+</mapper>

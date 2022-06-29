@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mgtorder">
+	<select id='tot_size' parameterType="bean.PageMgtView" resultType="Integer">
+		select count(sno)
+		from orders o join `user` u join item i
+		where o.uId =u.uId
+		and o.code =i.code
+		and o.orderdate between "${std}" and "${edd}"
+		and ${type} like '%${findStr}%'
+		order by o.orderNo ${sortType}
+	</select>
+	
+	<select id='select' parameterType="bean.PageMgtView" resultType="sale.MgtOdVo">
+		select o.sno, o.orderNo, o.uId, u.uName, o.code,
+		i.codeName,o.orderEa,i.price, o.amt,o.orderDate,
+		o.remark,o.rName,o.rPhone,o.rZipcode,o.rAddress,o.paymentType
+		from orders o join `user` u join item i
+		where o.uId =u.uId
+		and o.code =i.code
+		and o.orderdate between "${std}" and "${edd}"
+		and ${type} like '%${findStr}%'
+		order by o.orderNo ${sortType}
+		limit ${startNo}, ${listSize}
+	</select>
+	
+
+	
+</mapper>

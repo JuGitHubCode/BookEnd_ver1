@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user_member">
+
+<select id="member_login" parameterType="member.UserMemberVo" resultType="member.UserMemberVo">
+	select uId, uName, job from user
+	where uId=#{uId} and pwd=#{pwd}
+</select>	
+
+<insert id="member_insert" parameterType="member.UserMemberVo">
+	insert into user(uId, pwd, uName, birth, phone, email, zipCode, address1, 
+					 address2, gender, joinDate, job)
+	values(#{uId}, #{pwd}, #{uName}, #{birth}, #{phone}, #{email}, 
+		   #{zipCode}, #{address1}, #{address2}, #{gender}, #{joinDate}, #{job})
+</insert>
+
+<select id="member_find_phone" parameterType="member.UserMemberVo" resultType="String">
+	select uId, joinDate from user
+	where uName = #{uName} and phone = #{phone}
+</select>
+
+<select id="member_find_email" parameterType="member.UserMemberVo" resultType="String">
+	select uId, joinDate from user
+	where uName = #{uName} and email = #{email}
+</select>
+
+<select id="member_uId_validation" parameterType="String" resultType="String">
+	select uId from user
+	where uId = '${_parameter}'
+</select>
+
+<select id="member_email_validation" parameterType="String" resultType="String">
+	select email from user
+	where email = '${_parameter}' 
+</select>
+
+<select id="member_phone_validation" parameterType="String" resultType="String">
+	select phone from user
+	where phone = '${_parameter}'
+</select>
+
+<update id="member_temp_pwd" parameterType="member.UserMemberVo">
+	update user set pwd = #{pwd} 
+	where uId = #{uId} and email = #{email}
+</update>
+
+</mapper>
